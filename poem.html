@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Hub</title>
+    <style>
+        /* Reset default margin and padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Full-page hero section with background image */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden; /* Hide overflow for the animation */
+            background-size: auto 100%;
+            background-position: 0 0; /* Initial background position */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin-top: 1vh;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-family: 'Brush Script MT', cursive;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        .next-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 10px 80px;
+        }
+
+        /* Main content section */
+        .about-section {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .about-section p {
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-buttons {
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .footer-buttons button {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            padding: 5px 30px; /* Add padding back */
+        }
+
+        /* Animation for smooth background transition */
+        @keyframes changeBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .hero {
+            animation: changeBackground 20s linear infinite; /* Adjusted animation properties */
+        }
+        
+        /* Disable text selection */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE 10+/Edge */
+            user-select: none; /* Standard */
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1 style="font-family: 'Brush Script MT', cursive;">Welcome to Poetry Hub</h1>
+        <p>Discover the beauty of words</p>
+    </div>
+    <a href="MENU.html" class="next-button">Next</a>
+</header>
+
+<main>
+    <section class="about-section">
+        <div class="container">
+            <h2>About Poetry Hub</h2>
+            <p>Poetry Hub is a place where poets and poetry enthusiasts come together to explore, create, and share their passion for poetry. It's a sanctuary for wordsmiths and dreamers alike, where verses blossom into melodies of the soul, echoing the myriad emotions that dance within. It's a haven where hearts find solace, minds unravel mysteries, and the beauty of language is celebrated in its purest form. Welcome to Poetry Hub, where every syllable holds the power to ignite imagination and kindle the flames of inspiration.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-buttons">
+            <a href="term.html"><button>Terms and Services</button></a>
+            <a href="contact.html"><button>Contact Us</button></a>
+            <a href="https://www.instagram.com/kavii.samelan?igsh=MTYyaThmc3V4dDBtcA=="><button>Instagram</button></a>
+            <a href="privatepolicy.html"><button>Privacy Policy</button></a>
+        </div>
+        <p>&copy; 2024 Poetry Hub. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // JavaScript to change background images
+    let images = [
+        'https://wallpapercave.com/wp/45bQxRZ.jpg',
+        'https://wallpapercave.com/wp/wp2798753.jpg',
+        'https://wallpapercave.com/wp/wp2798773.jpg'
+    ];
+
+    // Preload images to browser cache
+    images.forEach(imageSrc => {
+        const img = new Image();
+        img.src = imageSrc;
+    });
+
+    let index = 0;
+
+    function changeBackground() {
+        index = (index + 1) % images.length;
+        document.querySelector('.hero').style.backgroundImage = `url('${images[index]}')`;
+    }
+
+    setInterval(changeBackground, 10000); // Change background every 10 seconds
+    changeBackground(); // Change background initially
+</script>
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetry Hub-Essay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Disable text selection */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE 10+/Edge */
+            user-select: none; /* Standard */
+        }
+
+        header {
+            background-image: url('https://wallpaperbat.com/img/738782-color-black-dark-tribal-ipad-wallpaper-background-and-theme-tribal-wallpaper-tribal-print-background-tribal-pattern-wallpaper.jpg');
+            background-repeat: repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #333; /* Fallback color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 75px; /* Increased font size */
+            font-family: 'Brush Script MT', cursive; /* Change font family */
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-ancient-poet-poetry-lyrics-large-size-background-image_123870.jpg'); /* Placeholder background image URL */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white overlay */
+            z-index: -1;
+        }
+
+        section h2 {
+            color: #333;
+        }
+
+        section p {
+            color: #555;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Default font */
+            font-size: 16px; /* Default font size */
+            outline: none; /* Remove default outline */
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #555; /* Change border color on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline */
+            font-size: 16px; /* Button font size */
+            font-family: Arial, sans-serif; /* Button font family */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        /* Style for the previous button */
+        .previous-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline from the link */
+            margin-top: 20px; /* Add margin to the top */
+            display: block; /* Make the button a block element */
+        }
+
+        .previous-button:hover {
+            background-color: #555;
+        }
+
+        /* Align buttons */
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+            justify-content: center;
+        }
+
+        footer ul li {
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin-bottom: 10px; /* Add space between buttons */
+            display: inline-block; /* Make buttons display in a line */
+        }
+
+        footer ul li a:hover {
+            background-color: #555;
+            color: #fff; /* Change text color on hover */
+        }
+
+        .social-media {
+            text-align: center;
+        }
+
+        .social-media a {
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        .poem-metrics {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+            text-align: left;
+            position: relative; /* Position within the section */
+            bottom: 70px; /* Distance from the bottom */
+            left: 600px; /* Distance from the left */
+            padding-left: 10px; /* Add padding to the left */
+        }
+
+        #wordCount {
+            display: inline-block; /* Display on the same line */
+            margin-left: 10px; /* Add space between line count and paragraph count */
+            vertical-align: middle; /* Align vertically */
+        }
+
+        #font,
+        #size {
+            margin-top: 20px; /* Shift font and size selection upwards */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Poetry Hub-Essay</h1> <!-- Updated title with increased font size and Brush Script MT font -->
+    </header>
+    <main>
+        <section id="submission">
+            <h2>Submit Your Essay</h2>
+            <form action="submit2.html" method="post" onsubmit="return validateForm()" onpaste="return false">
+
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+
+                <label for="essay">Essay:</label> <!-- Changed from "Poem" to "Essay" -->
+                <textarea id="essay" name="essay" rows="10" required oninput="countWords()" style="resize: vertical;"></textarea>
+                <div class="poem-metrics" id="wordCount">Word Count: 0</div> <!-- Changed id to "wordCount" -->
+
+                <!-- Font selection dropdown menu -->
+                <label for="font">Font:</label>
+                <select id="font" name="font" onchange="changeFont()">
+                    <option value="Arial">Arial</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Lucida Console">Lucida Console</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Arial Black">Arial Black</option>
+                    <option value="Arial Narrow">Arial Narrow</option>
+                    <option value="Book Antiqua">Book Antiqua</option>
+                    <option value="Century Gothic">Century Gothic</option>
+                    <option value="Garamond">Garamond</option>
+                    <option value="Geneva">Geneva</option>
+                    <option value="Palatino">Palatino</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                    <option value="Rockwell">Rockwell</option>
+                    <option value="Arial Narrow">Arial Narrow</option>
+                    <option value="Courier">Courier</option>
+                    <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                    <option value="Bookman Old Style">Bookman Old Style</option>
+                    <option value="Consolas">Consolas</option>
+                    <option value="Cambria">Cambria</option>
+                    <option value="Copperplate">Copperplate</option>
+                    <option value="Elephant">Elephant</option>
+                    <option value="Futura">Futura</option>
+                    <option value="Hoefler Text">Hoefler Text</option>
+                    <option value="Inconsolata">Inconsolata</option>
+                    <option value="Jokerman">Jokerman</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="MS Gothic">MS Gothic</option>
+                    <option value="MV Boli">MV Boli</option>
+                    <option value="OCR A Extended">OCR A Extended</option>
+                    <option value="Old English Text MT">Old English Text MT</option>
+                    <option value="Papyrus">Papyrus</option>
+                    <option value="Segoe UI">Segoe UI</option>
+                    <option value="Symbol">Symbol</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Webdings">Webdings</option>
+                    <option value="Wingdings">Wingdings</option>
+			<option value="Agency FB">Agency FB</option>
+			<option value="Algerian">Algerian</option>									
+<option value="Arial Black">Arial Black</option>
+<option value="Arial Narrow">Arial Narrow</option>
+<option value="Arial Rounded MT Bold">Arial Rounded MT Bold</option>
+<option value="Arial Unicode MS">Arial Unicode MS</option>
+<option value="Baskerville Old Face">Baskerville Old Face</option>
+<option value="Bauhaus 93">Bauhaus 93</option>
+<option value="Bell MT">Bell MT</option>
+<option value="Berlin Sans FB">Berlin Sans FB</option>
+<option value="Bernard MT Condensed">Bernard MT Condensed</option>
+<option value="Blackadder ITC">Blackadder ITC</option>
+<option value="Bodoni MT">Bodoni MT</option>
+<option value="Bradley Hand ITC">Bradley Hand ITC</option>
+<option value="Brush Script MT">Brush Script MT</option>
+<option value="Californian FB">Californian FB</option>
+<option value="Cambria">Cambria</option>
+<option value="Candara">Candara</option>
+<option value="Castellar">Castellar</option>
+<option value="Centaur">Centaur</option>
+<option value="Century">Century</option>
+<option value="Century Schoolbook">Century Schoolbook</option>
+<option value="Chiller">Chiller</option>
+<option value="Colonna MT">Colonna MT</option>
+<option value="Constantia">Constantia</option>
+<option value="Cooper Black">Cooper Black</option>
+<option value="Corbel">Corbel</option>
+<option value="Curlz MT">Curlz MT</option>
+<option value="Dubai">Dubai</option>
+<option value="Edwardian Script ITC">Edwardian Script ITC</option>
+<option value="Engravers MT">Engravers MT</option>
+<option value="Eras Bold ITC">Eras Bold ITC</option>
+<option value="Estrangelo Edessa">Estrangelo Edessa</option>
+<option value="Euphemia">Euphemia</option>
+<option value="Felix Titling">Felix Titling</option>
+<option value="Footlight MT Light">Footlight MT Light</option>
+<option value="Forte">Forte</option>
+<option value="Franklin Gothic Book">Franklin Gothic Book</option>
+<option value="Freestyle Script">Freestyle Script</option>
+<option value="French Script MT">French Script MT</option>
+<option value="Gabriola">Gabriola</option>
+<option value="Garamond">Garamond</option>
+<option value="Gigi">Gigi</option>
+<option value="Gill Sans MT">Gill Sans MT</option>
+<option value="Goudy Old Style">Goudy Old Style</option>
+<option value="Goudy Stout">Goudy Stout</option>
+<option value="Haettenschweiler">Haettenschweiler</option>
+<option value="Harrington">Harrington</option>
+<option value="High Tower Text">High Tower Text</option>
+<option value="Imprint MT Shadow">Imprint MT Shadow</option>
+<option value="Informal Roman">Informal Roman</option>
+<option value="JasmineUPC">JasmineUPC</option>
+<option value="Jokerman">Jokerman</option>
+<option value="Juice ITC">Juice ITC</option>
+<option value="Kalinga">Kalinga</option>
+<option value="Kartika">Kartika</option>
+<option value="Kristen ITC">Kristen ITC</option>
+<option value="Kunstler Script">Kunstler Script</option>
+<option value="Leelawadee">Leelawadee</option>
+<option value="Levenim MT">Levenim MT</option>
+<option value="Lucida Bright">Lucida Bright</option>
+<option value="Lucida Fax">Lucida Fax</option>
+<option value="Lucida Handwriting">Lucida Handwriting</option>
+<option value="Magneto">Magneto</option>
+<option value="Maiandra GD">Maiandra GD</option>
+<option value="Malgun Gothic">Malgun Gothic</option>
+<option value="Marlett">Marlett</option>
+<option value="Matura MT Script Capitals">Matura MT Script Capitals</option>
+<option value="Microsoft Himalaya">Microsoft Himalaya</option>
+<option value="Microsoft JhengHei">Microsoft JhengHei</option>
+<option value="Microsoft New Tai Lue">Microsoft New Tai Lue</option>
+<option value="Microsoft PhagsPa">Microsoft PhagsPa</option>
+<option value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+<option value="Microsoft Tai Le">Microsoft Tai Le</option>
+<option value="Microsoft Uighur">Microsoft Uighur</option>
+<option value="Microsoft YaHei">Microsoft YaHei</option>
+<option value="Microsoft Yi Baiti">Microsoft Yi Baiti</option>
+<option value="MingLiU-ExtB">MingLiU-ExtB</option>
+<option value="Mistral">Mistral</option>
+<option value="Modern No. 20">Modern No. 20</option>
+<option value="Mongolian Baiti">Mongolian Baiti</option>
+<option value="Monotype Corsiva">Monotype Corsiva</option>
+<option value="MS Gothic">MS Gothic</option>
+<option value="MS Outlook">MS Outlook</option>
+<option value="MS PGothic">MS PGothic</option>
+<option value="MS Reference Sans Serif">MS Reference Sans Serif</option>
+<option value="MS Reference Specialty">MS Reference Specialty</option>
+<option value="MS UI Gothic">MS UI Gothic</option>
+<option value="MT Extra">MT Extra</option>
+<option value="Niagara Engraved">Niagara Engraved</option>
+<option value="Niagara Solid">Niagara Solid</option>
+<option value="Nirmala UI">Nirmala UI</option>
+<option value="NSimSun">NSimSun</option>
+<option value="Nyala">Nyala</option>
+<option value="Onyx">Onyx</option>
+<option value="Palace Script MT">Palace Script MT</option>
+<option value="Papyrus">Papyrus</option>
+<option value="Perpetua">Perpetua</option>
+<option value="Perpetua Titling MT">Perpetua Titling MT</option>
+<option value="Playbill">Playbill</option>
+<option value="Poor Richard">Poor Richard</option>
+<option value="Pristina">Pristina</option>
+<option value="Rage Italic">Rage Italic</option>
+<option value="Ravie">Ravie</option>
+<option value="Roman">Roman</option>
+<option value="Sakkal Majalla">Sakkal Majalla</option>
+<option value="Script MT Bold">Script MT Bold</option>
+<option value="Segoe Print">Segoe Print</option>
+<option value="Showcard Gothic">Showcard Gothic</option>
+<option value="Shruti">Shruti</option>
+<option value="Snap ITC">Snap ITC</option>
+<option value="Stencil">Stencil</option>
+<option value="Sylfaen">Sylfaen</option>
+<option value="Tempus Sans ITC">Tempus Sans ITC</option>
+<option value="Tw Cen MT">Tw Cen MT</option>
+<option value="Verdana Pro">Verdana Pro</option>
+<option value="Viner Hand ITC">Viner Hand ITC</option>
+<option value="Vivaldi">Vivaldi</option>
+<option value="Vladimir Script">Vladimir Script</option>
+<option value="Wide Latin">Wide Latin</option>
+<option value="Yu Gothic">Yu Gothic</option>
+<option value="Yu Mincho">Yu Mincho</option>
+<option value="Yu Gothic UI">Yu Gothic UI</option>
+<option value="Zapf Chancery">Zapf Chancery</option>
+<option value="Zapf Dingbats">Zapf Dingbats</option>
+<option value="Zapfino">Zapfino</option>
+<option value="Aharoni">Aharoni</option>
+<option value="Arial Nova">Arial Nova</option>
+<option value="Bodoni MT Poster Compressed">Bodoni MT Poster Compressed</option>
+<option value="Bookshelf Symbol 7">Bookshelf Symbol 7</option>
+<option value="Century Gothic">Century Gothic</option>
+<option value="Century Schoolbook">Century Schoolbook</option>
+<option value="Century Schoolbook">Century Schoolbook</option>
+<option value="Colonna">Colonna</option>
+<option value="Comic Sans MS">Comic Sans MS</option>
+<option value="Consolas">Consolas</option>
+<option value="Courier New">Courier New</option>
+<option value="Gill Sans MT Condensed">Gill Sans MT Condensed</option>
+<option value="HoloLens MDL2 Assets">HoloLens MDL2 Assets</option>
+<option value="Impact">Impact</option>
+<option value="Kristen ITC">Kristen ITC</option>
+<option value="Lucida Console">Lucida Console</option>
+<option value="Maiandra GD">Maiandra GD</option>
+<option value="Malgun Gothic">Malgun Gothic</option>
+<option value="Microsoft Himalaya">Microsoft Himalaya</option>
+<option value="Microsoft JhengHei UI">Microsoft JhengHei UI</option>
+<option value="Microsoft New Tai Lue">Microsoft New Tai Lue</option>
+<option value="Microsoft PhagsPa">Microsoft PhagsPa</option>
+<option value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+<option value="Microsoft Tai Le">Microsoft Tai Le</option>
+<option value="Microsoft YaHei UI">Microsoft YaHei UI</option>
+<option value="Microsoft Yi Baiti">Microsoft Yi Baiti</option>
+<option value="MingLiU-ExtB">MingLiU-ExtB</option>
+<option value="MS Gothic">MS Gothic</option>
+<option value="MS Outlook">MS Outlook</option>
+<option value="MS PGothic">MS PGothic</option>
+<option value="MS Reference Sans Serif">MS Reference Sans Serif</option>
+<option value="MS Reference Specialty">MS Reference Specialty</option>
+<option value="MS UI Gothic">MS UI Gothic</option>
+<option value="MT Extra">MT Extra</option>
+<option value="Myanmar Text">Myanmar Text</option>
+<option value="Nirmala UI">Nirmala UI</option>
+<option value="NSimSun">NSimSun</option>
+<option value="Nyala">Nyala</option>
+<option value="Segoe MDL2 Assets">Segoe MDL2 Assets</option>
+<option value="Segoe Print">Segoe Print</option>
+<option value="Segoe Script">Segoe Script</option>
+<option value="Segoe UI Emoji">Segoe UI Emoji</option>
+<option value="Segoe UI Historic">Segoe UI Historic</option>
+<option value="Segoe UI Symbol">Segoe UI Symbol</option>
+<option value="SimSun">SimSun</option>
+<option value="Sylfaen">Sylfaen</option>
+<option value="System">System</option>
+<option value="Times New Roman">Times New Roman</option>
+<option value="Verdana">Verdana</option>
+
+                </select>    
+
+                <!-- Size selection input box -->
+                <label for="size">Size:</label>
+                <input type="number" id="size" name="size" min="10" max="72" value="16" onchange="changeSize()" required style="width: 60px;">
+
+                <input type="submit" value="Submit" class="submit-button">
+            </form>
+            <a href="MENU.html" class="previous-button">Previous</a> <!-- Link to the previous page -->
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="term.html">Terms of Service</a></li> <!-- Link to the Terms of Service page -->
+            <li><a href="privatepolicy.html">Privacy Policy</a></li> <!-- Link to the Privacy Policy page -->
+            <li><a href="contact.html">Contact Us</a></li> <!-- Link to the Contact Us page -->
+        </ul>
+        <div class="social-media">
+            <a href="https://www.instagram.com/kavii.samelan?igsh=MTYyaThmc3V4dDBtcA==" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        function changeFont() {
+            var font = document.getElementById("font").value;
+            document.getElementById("title").style.fontFamily = font;
+            document.getElementById("author").style.fontFamily = font;
+            document.getElementById("essay").style.fontFamily = font; // Changed from "poem" to "essay"
+        }
+
+        function changeSize() {
+            var size = document.getElementById("size").value;
+            document.getElementById("title").style.fontSize = size + "px";
+            document.getElementById("author").style.fontSize = size + "px";
+            document.getElementById("essay").style.fontSize = size + "px"; // Changed from "poem" to "essay"
+        }
+   function countWords() {
+    var essayText = document.getElementById("essay").value.trim();
+    var nonEmptyLines = essayText.split("\n").filter(line => line.trim() !== ""); // Remove empty lines
+    var wordCount = nonEmptyLines.join(" ").split(/\s+/).filter(word => word !== "").length; // Calculate word count
+    document.getElementById("wordCount").textContent = "Word Count: " + wordCount;
+}
+
+document.getElementById("essay").addEventListener("input", countWords);
+
+// Trigger initial word count calculation
+countWords();
+    
+document.getElementById("essay").addEventListener("input", countWords);
+
+        function validateForm() {
+            var title = document.getElementById("title").value;
+            var author = document.getElementById("author").value;
+            var essay = document.getElementById("essay").value;
+
+            if (title === "" || author === "" || essay === "") {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Genres</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-size: auto 100%; /* Adjusted background size */
+        background-position: left; /* Set initial background position */
+        overflow-x: hidden;
+        animation: changeBackground linear infinite;
+        animation-duration: 20s; /* Adjust the duration as needed */
+    }
+
+    .container {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    h1 {
+        color:#333333 ;
+        margin-bottom: 20px;
+        font-family: 'ALGERIAN', sans-serif;
+        font-size: 40px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button {
+        padding: 20px 40px;
+        margin: 10px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        color: #fff; /* Set text color to white */
+    }
+
+    .custom-button {
+        padding: 20px 40px;
+        background-color: #000; /* Set padding color to black */
+    }
+
+    .button:hover {
+        filter: brightness(1.2);
+    }
+
+    /* Additional styles for Poetry Hub */
+    .poetry-hub {
+        font-family: "Brush Script MT", cursive;
+        font-size: 100px;
+        color: #fff;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Style for home button */
+.BackToHome-button {
+    padding: 20px 40px; /* Padding for the Back To Home button */
+    margin: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff; /* Set text color to black */
+    background-color: #000; /* Set padding color to black */
+}
+
+.BackToHome-button:hover {
+    filter: brightness(1.2);
+}
+
+    /* Added style for positioning the home button at the bottom */
+    .bottom-button-container {
+        position: fixed;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Animation for smooth background transition */
+    @keyframes changeBackground {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 100% 0;
+        }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Select a Writing Genre</h1>
+    <div class="button-container">
+        <a href="poem2.html" class="button custom-button" id="button1">Poem</a>
+   <a href="essay.html" class="button custom-button" id="button2">essay</a>
+        <a href="letter.html" class="button custom-button" id="button3">letter</a>
+        <button class="button custom-button" id="button4">Blog</button>
+    </div>
+</div>
+
+<h1 class="poetry-hub">Poetry Hub</h1>
+
+<!-- Back To Home button -->
+<div class="bottom-button-container">
+    <a href="poem.html" class="BackToHome-button">Back To Home </a>
+</div>
+
+<script>
+    // JavaScript to change background images
+    let images = [
+        'https://images.unsplash.com/photo-1516399570-38faab0fbc61?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'https://media.istockphoto.com/id/502132063/photo/mother-nature-unleashes-her-rage.jpg?s=1024x1024&w=is&k=20&c=PpiWi5noi-29DQCIyoV4CSDJV2xUYo7SCBp5usvnZ8M=',
+        'https://images.unsplash.com/photo-1516410529446-2c777cb7366d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'https://images.pexels.com/photos/3178798/pexels-photo-3178798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        'https://images.pexels.com/photos/846980/pexels-photo-846980.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    ];
+    let index = Math.floor(Math.random() * images.length);
+    document.body.style.backgroundImage = `url('${images[index]}')`;
+
+    let bgPos = 0;
+
+    function changeBackground() {
+        let previousIndex = index;
+        index = (index + 1) % images.length;
+
+        // Preload the next background image
+        let nextImage = new Image();
+        nextImage.src = images[index];
+
+        // Change the background after the next image has loaded
+        nextImage.onload = function() {
+            document.body.style.backgroundImage = `url('${images[index]}')`;
+        };
+    }
+
+    setInterval(changeBackground, 10000); // Change background every 10 seconds
+
+   
+    // Call the function initially and then every time the background changes
+    changeButtonColors();
+    setInterval(changeButtonColors, 10000);
+
+</script>
+
+</body>
+</html>

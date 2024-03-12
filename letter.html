@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Disable text selection */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE 10+/Edge */
+            user-select: none; /* Standard */
+        }
+
+        header {
+            background-image: url('https://wallpaperbat.com/img/738782-color-black-dark-tribal-ipad-wallpaper-background-and-theme-tribal-wallpaper-tribal-print-background-tribal-pattern-wallpaper.jpg');
+            background-repeat: repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #333; /* Fallback color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 75px; /* Increased font size */
+            font-family: 'Brush Script MT', cursive; /* Change font family */
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-ancient-poet-poetry-lyrics-large-size-background-image_123870.jpg'); /* Placeholder background image URL */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white overlay */
+            z-index: -1;
+        }
+
+        section h2 {
+            color: #333;
+        }
+
+        section p {
+            color: #555;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Default font */
+            font-size: 16px; /* Default font size */
+            outline: none; /* Remove default outline */
+            resize: vertical;
+        }
+
+        textarea:focus {
+            border-color: #555; /* Change border color on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline */
+            font-size: 16px; /* Button font size */
+            font-family: Arial, sans-serif; /* Button font family */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .previous-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline from the link */
+            margin-top: 20px; /* Add margin to the top */
+            display: block; /* Make the button a block element */
+        }
+
+        .previous-button:hover {
+            background-color: #555;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+            justify-content: center;
+        }
+
+        footer ul li {
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin-bottom: 10px; /* Add space between buttons */
+            display: inline-block; /* Make buttons display in a line */
+        }
+
+        footer ul li a:hover {
+            background-color: #555;
+            color: #fff; /* Change text color on hover */
+        }
+
+        .social-media {
+            text-align: center;
+        }
+
+        .social-media a {
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Poetry Hub-Letter</h1>
+    </header>
+    <main>
+        <section id="submission">
+            <h2>Submit Your Letter</h2>
+            <form action="submit3.html" method="post" onsubmit="return validateForm()" onpaste="return false">
+
+                <label for="letter">Letter:</label>
+                <textarea id="letter" name="letter" rows="25" required>
+[Your Name]
+[Your Address]
+[City, State, Zip Code]
+[Your Email Address]
+[Your Phone Number]
+[Today's Date]
+
+[Recipient's Name]
+[Recipient's Position/Title]
+[Company/Organization Name]
+[Company/Organization Address]
+[City, State, Zip Code]
+
+Dear [Recipient's Name or Title],
+
+I am writing to discuss [topic of your letter], and I believe it is essential to begin with an exploration of [relevant theory or concept].
+
+**Theory Section**
+
+Introduction:
+In order to fully grasp the dynamics of [topic], it is crucial to understand the concept of [theory]. [Brief overview of the theory].
+
+Explanation:
+[Detailed explanation of the theory, including key concepts and principles. Use examples or analogies to aid understanding].
+
+Supporting Evidence:
+[Reference to relevant studies or literature supporting the theory].
+
+Relevance to Your Letter:
+Understanding [theory] is fundamental to addressing the challenges/opportunities presented by [topic of your letter]. It provides insight into [explain relevance].
+
+Conclusion:
+In summary, [theory] lays the groundwork for our discussion on [topic]. By comprehending this theory, we can better [state the intended outcome].
+
+[Transition to the next section of your letter]
+
+Sincerely,
+
+[Your Name]
+
+Enclosures: [List of any documents enclosed with the letter]
+                </textarea>
+
+                <input type="submit" value="Submit" class="submit-button">
+            </form>
+            <a href="MENU.html" class="previous-button">Previous</a>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="term.html">Terms of Service</a></li>
+            <li><a href="privatepolicy.html">Privacy Policy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="https://www.instagram.com/kavii.samelan?igsh=MTYyaThmc3V4dDBtcA==" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        function validateForm() {
+            var letter = document.getElementById("letter").value;
+
+            if (letter === "") {
+                alert("Please fill in the letter field.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
